@@ -1,2 +1,3 @@
 # go-shop-api
-go 电商系统的 web api 服务
+
+基于 go/gin 的简单电商系统 web api 服务
