@@ -51,8 +51,8 @@ func SendSms(ctx *gin.Context) {
 	request.ApiName = "SendSms"
 	request.QueryParams["RegionId"] = "cn-beijing"
 	request.QueryParams["PhoneNumbers"] = sendSmsForm.Mobile            //手机号
-	request.QueryParams["SignName"] = "慕学在线"                            //阿里云验证过的项目名 自己设置
-	request.QueryParams["TemplateCode"] = "SMS_181850725"               //阿里云的短信模板号 自己设置
+	request.QueryParams["SignName"] = "go-shop"                         //阿里云验证过的项目名 自己设置
+	request.QueryParams["TemplateCode"] = "SMS_17766666666"             //阿里云的短信模板号 自己设置
 	request.QueryParams["TemplateParam"] = "{\"code\":" + smsCode + "}" //短信模板中的验证码内容 自己生成   之前试过直接返回，但是失败，加上code成功。
 	response, err := client.ProcessCommonRequest(request)
 	fmt.Print(client.DoAction(request, response))

@@ -107,7 +107,6 @@ func GetUserList(ctx *gin.Context) {
 		user := reponse.UserResponse{
 			Id:       value.Id,
 			NickName: value.NickName,
-			//Birthday: time.Time(time.Unix(int64(value.BirthDay), 0)).Format("2006-01-02"),
 			Birthday: reponse.JsonTime(time.Unix(int64(value.BirthDay), 0)),
 			Gender:   value.Gender,
 			Mobile:   value.Mobile,

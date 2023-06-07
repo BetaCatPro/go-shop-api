@@ -65,10 +65,7 @@ func InitSrvConn2() {
 			"msg", err.Error(),
 		)
 	}
-	//1. 后续的用户服务下线了 2. 改端口了 3. 改ip了 负载均衡来做
 
-	//2. 已经事先创立好了连接，这样后续就不用进行再次tcp的三次握手
-	//3. 一个连接多个groutine共用，性能 - 连接池
 	userSrvClient := proto.NewUserClient(userConn)
 	global.UserSrvClient = userSrvClient
 }

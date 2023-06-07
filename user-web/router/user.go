@@ -17,5 +17,4 @@ func InitUserRouter(Router *gin.RouterGroup) {
 		UserRouter.GET("detail", middlewares.JWTAuth(), api.GetUserDetail)
 		UserRouter.PATCH("update", middlewares.JWTAuth(), api.UpdateUser)
 	}
-	//服务注册和发现
 }

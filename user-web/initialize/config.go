@@ -16,7 +16,6 @@ import (
 func GetEnvInfo(env string) bool {
 	viper.AutomaticEnv()
 	return viper.GetBool(env)
-	//刚才设置的环境变量 想要生效 我们必须得重启goland
 }
 
 func InitConfig() {
@@ -35,7 +34,7 @@ func InitConfig() {
 	if err := v.ReadInConfig(); err != nil {
 		panic(err)
 	}
-	//这个对象如何在其他文件中使用 - 全局变量
+	// 利用全局变量
 	if err := v.Unmarshal(global.NacosConfig); err != nil {
 		panic(err)
 	}
