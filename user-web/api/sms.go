@@ -17,15 +17,15 @@ import (
 	"go-shop-api/user-web/global"
 )
 
-func GenerateSmsCode(witdh int) string {
+func GenerateSmsCode(width int) string {
 	//生成width长度的短信验证码
 
 	numeric := [10]byte{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 	r := len(numeric)
-	rand.Seed(time.Now().UnixNano())
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	var sb strings.Builder
-	for i := 0; i < witdh; i++ {
+	for i := 0; i < width; i++ {
 		fmt.Fprintf(&sb, "%d", numeric[rand.Intn(r)])
 	}
 	return sb.String()

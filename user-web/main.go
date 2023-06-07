@@ -75,9 +75,9 @@ func main() {
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	//if err = register_client.DeRegister(serviceId); err != nil {
-	//	zap.S().Info("注销失败:", err.Error())
-	//}else{
-	//	zap.S().Info("注销成功:")
-	//}
+	if err = register_client.DeRegister(serviceId); err != nil {
+		zap.S().Info("注销失败:", err.Error())
+	} else {
+		zap.S().Info("注销成功:")
+	}
 }

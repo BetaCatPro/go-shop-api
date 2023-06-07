@@ -74,7 +74,6 @@ func HandleValidatorError(c *gin.Context, err error) {
 	c.JSON(http.StatusBadRequest, gin.H{
 		"error": removeTopStruct(errs.Translate(global.Trans)),
 	})
-	return
 }
 
 func GetUserList(ctx *gin.Context) {
@@ -82,7 +81,6 @@ func GetUserList(ctx *gin.Context) {
 	claims, _ := ctx.Get("claims")
 	currentUser := claims.(*models.CustomClaims)
 	zap.S().Infof("访问用户: %d", currentUser.ID)
-	//生成grpc的client并调用接口
 
 	pn := ctx.DefaultQuery("pn", "0")
 	pnInt, _ := strconv.Atoi(pn)
@@ -170,7 +168,7 @@ func PassWordLogin(c *gin.Context) {
 					StandardClaims: jwt.StandardClaims{
 						NotBefore: time.Now().Unix(),               //签名的生效时间
 						ExpiresAt: time.Now().Unix() + 60*60*24*30, //30天过期
-						Issuer:    "imooc",
+						Issuer:    "go",
 					},
 				}
 				token, err := j.CreateToken(claims)
@@ -243,7 +241,7 @@ func Register(c *gin.Context) {
 		StandardClaims: jwt.StandardClaims{
 			NotBefore: time.Now().Unix(),               //签名的生效时间
 			ExpiresAt: time.Now().Unix() + 60*60*24*30, //30天过期
-			Issuer:    "imooc",
+			Issuer:    "go",
 		},
 	}
 	token, err := j.CreateToken(claims)
